@@ -1,0 +1,29 @@
+# Build
+bin/
+obj/
+
+# Rider
+.idea/
+
+# Visual Studio
+.vs/
+
+# VS Code
+.vscode/
+
+# User files
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# EF
+Migrations/*Snapshot.cs
+
+# OS
+.DS_Store
+Thumbs.db
