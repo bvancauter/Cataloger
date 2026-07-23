@@ -2,6 +2,7 @@
     public class CollectionItemEntity {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
+        public DateOnly? ReleaseDate { get; set; }
         public DateOnly? PurchaseDate { get; set; }
         public decimal? PurchasePrice { get; set; }
         public bool IsFavorite { get; set; }

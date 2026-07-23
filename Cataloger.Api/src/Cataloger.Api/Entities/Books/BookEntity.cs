@@ -3,7 +3,6 @@
         public int Volume { get; set; }
         public string? Synopsis { get; set; }
         public string? Isbn { get; set; }
-        public DateOnly? ReleaseDate { get; set; }
         public BookType Type { get; set; }
         public BookStatus Status { get; set; }
         public BookCondition Condition { get; set; }
