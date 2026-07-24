@@ -1,4 +1,6 @@
 using Cataloger.Api.Data;
+using FastEndpoints;
+using FastEndpoints.Swagger;
 using Microsoft.EntityFrameworkCore;
 
 DotNetEnv.Env.Load();
@@ -16,16 +18,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseNpgsql(connectionString);
 });
 
-// builder.Services.AddFastEndpoints();
+builder.Services.AddFastEndpoints();
 
-// builder.Services.AddSwaggerDocument();
+builder.Services.SwaggerDocument();
 
 var app = builder.Build();
 
-// app.UseFastEndpoints();
+app.UseFastEndpoints();
 
-// app.UseOpenApi();
-
-// app.UseSwaggerUi();
+app.UseSwaggerGen();
 
 app.Run();
