@@ -1,4 +1,5 @@
 ﻿using Cataloger.Api.Data;
+using Cataloger.Api.Entities.Books;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,12 +15,13 @@ public class Endpoint(ApplicationDbContext applicationDbContext)
     public override async Task HandleAsync(CancellationToken ct) {
         var publishers = await applicationDbContext.Publishers
             .AsNoTracking()
-            .Select(p => new Response {
-                Id = p.Id,
-                Name = p.Name
-            })
             .ToListAsync(ct);
 
-        await Send.OkAsync(publishers, cancellation: ct);
+        await Send.OkAsync(publishers.Select(ToResponse), ct);
     }
+
+    private static Response ToResponse(PublisherEntity entity) => new() {
+        Id = entity.Id,
+        Name = entity.Name
+    };
 }
