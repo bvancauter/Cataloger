@@ -10,6 +10,9 @@ namespace Cataloger.Api.Data.Configurations.Books {
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(255);
+
+            builder.HasIndex(x => x.Name)
+                .IsUnique();
         }
     }
 }
