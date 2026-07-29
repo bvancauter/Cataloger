@@ -24,7 +24,11 @@ namespace Cataloger.Api.Features.Books.Publishers.Create {
                 var entity = ToEntity(request);
                 applicationDbContext.Publishers.Add(entity);
                 await applicationDbContext.SaveChangesAsync(ct);
-                await Send.OkAsync(ToResponse(entity), cancellation: ct); // need to be modified to send a created code
+                await Send.CreatedAtAsync<Get.Endpoint>(
+                    new { id = entity.Id },
+                    ToResponse(entity),
+                    cancellation: ct
+                );
             }
         }
 
