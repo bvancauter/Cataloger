@@ -1,6 +1,6 @@
 ﻿using Cataloger.Api.Data;
 using Cataloger.Api.Entities.Books;
-using Cataloger.Api.Features.Books.Publishers.GetAll;
+using Cataloger.Api.Routes;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +9,7 @@ namespace Cataloger.Api.Features.Books.Publishers.Create {
         : Endpoint<Request, Response> {
 
         public override void Configure() {
-            Post("/api/books/publishers");
+            Post(BookRoutes.Publishers);
             AllowAnonymous();
         }
 
