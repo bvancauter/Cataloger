@@ -5,7 +5,7 @@ using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cataloger.Api.Features.Books.Publishers.Create {
-    public class Endpoint(ApplicationDbContext applicationDbContext) 
+    public class Endpoint(ApplicationDbContext applicationDbContext)
         : Endpoint<Request, Response> {
 
         public override void Configure() {
@@ -17,11 +17,10 @@ namespace Cataloger.Api.Features.Books.Publishers.Create {
             var exists = await applicationDbContext.Publishers
                 .AnyAsync(p => p.Name == request.Name, ct);
 
-            if(exists) {
+            if (exists) {
                 AddError(r => r.Name, "Publisher already exists.");
                 await Send.ErrorsAsync(cancellation: ct);
-            }
-            else {
+            } else {
                 var entity = ToEntity(request);
                 applicationDbContext.Publishers.Add(entity);
                 await applicationDbContext.SaveChangesAsync(ct);

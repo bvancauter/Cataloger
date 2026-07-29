@@ -4,7 +4,7 @@ using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cataloger.Api.Features.Books.Publishers.Delete {
-    public class Endpoint(ApplicationDbContext applicationDbContext) 
+    public class Endpoint(ApplicationDbContext applicationDbContext)
         : Endpoint<Request> {
 
         public override void Configure() {
@@ -16,10 +16,9 @@ namespace Cataloger.Api.Features.Books.Publishers.Delete {
             var publisher = await applicationDbContext.Publishers
                 .FirstOrDefaultAsync(p => p.Id == req.Id, ct);
 
-            if(publisher is null) {
+            if (publisher is null) {
                 await Send.NotFoundAsync(ct);
-            }
-            else {
+            } else {
                 applicationDbContext.Publishers.Remove(publisher);
                 await applicationDbContext.SaveChangesAsync(ct);
                 await Send.NoContentAsync(ct);

@@ -18,10 +18,9 @@ namespace Cataloger.Api.Features.Books.Publishers.Get {
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == req.Id, ct);
 
-            if(publisher is null) {
+            if (publisher is null) {
                 await Send.NotFoundAsync(ct);
-            }
-            else {
+            } else {
                 await Send.OkAsync(ToResponse(publisher), ct);
             }
         }
