@@ -14,11 +14,15 @@ namespace Cataloger.Api.Data.Configurations {
             builder.Property(x => x.Rating)
                 .HasPrecision(2, 1);
 
-            builder.ToTable(t =>
-            {
+            builder.ToTable(t => {
                 t.HasCheckConstraint(
                     "CK_CollectionItem_Rating",
                     "\"Rating\" IS NULL OR (\"Rating\" >= 0 AND \"Rating\" <= 5)"
+                );
+
+                t.HasCheckConstraint(
+                    "CK_CollectionItem_UpdatedAt_After_CreatedAt",
+                    "\"UpdatedAt\" IS NULL OR \"UpdatedAt\" >= \"CreatedAt\""
                 );
             });
         }
