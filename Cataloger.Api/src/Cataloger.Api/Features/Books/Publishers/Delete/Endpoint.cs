@@ -5,16 +5,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cataloger.Api.Features.Books.Publishers.Delete {
     public class Endpoint(ApplicationDbContext applicationDbContext)
-        : Endpoint<Request> {
+        : EndpointWithoutRequest {
 
         public override void Configure() {
             Delete(BookRoutes.Publishers + "/{id:guid}");
             AllowAnonymous();
         }
 
-        public override async Task HandleAsync(Request req, CancellationToken ct) {
+        public override async Task HandleAsync(CancellationToken ct) {
+            Guid id = Route<Guid>("id");
             var publisher = await applicationDbContext.Publishers
-                .FirstOrDefaultAsync(p => p.Id == req.Id, ct);
+                .FirstOrDefaultAsync(p => p.Id == id, ct);
 
             if (publisher is null) {
                 await Send.NotFoundAsync(ct);
