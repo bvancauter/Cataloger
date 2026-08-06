@@ -19,11 +19,11 @@ namespace Cataloger.Api.Features.Books.Publishers.Delete {
 
             if (publisher is null) {
                 await Send.NotFoundAsync(ct);
-            } else {
-                applicationDbContext.Publishers.Remove(publisher);
-                await applicationDbContext.SaveChangesAsync(ct);
-                await Send.NoContentAsync(ct);
+                return;
             }
+            applicationDbContext.Publishers.Remove(publisher);
+            await applicationDbContext.SaveChangesAsync(ct);
+            await Send.NoContentAsync(ct);
         }
     }
 }

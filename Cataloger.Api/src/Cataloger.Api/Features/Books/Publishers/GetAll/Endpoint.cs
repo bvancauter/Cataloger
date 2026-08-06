@@ -1,6 +1,6 @@
 ﻿using Cataloger.Api.Data;
-using Cataloger.Api.Entities.Books;
 using Cataloger.Api.Features.Books.Publishers.Models;
+using Cataloger.Api.Features.Books.Publishers.Utils;
 using Cataloger.Api.Routes;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
@@ -19,11 +19,6 @@ public class Endpoint(ApplicationDbContext applicationDbContext)
             .AsNoTracking()
             .ToListAsync(ct);
 
-        await Send.OkAsync(publishers.Select(ToResponse), ct);
+        await Send.OkAsync(publishers.Select(PublisherMapper.ToListModel), ct);
     }
-
-    private static PublisherListModel ToResponse(PublisherEntity entity) => new() {
-        Id = entity.Id,
-        Name = entity.Name
-    };
 }

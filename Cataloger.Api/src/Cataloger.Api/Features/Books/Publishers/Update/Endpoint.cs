@@ -1,5 +1,6 @@
 ﻿using Cataloger.Api.Data;
 using Cataloger.Api.Features.Books.Publishers.Models;
+using Cataloger.Api.Features.Books.Publishers.Utils;
 using Cataloger.Api.Routes;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@ namespace Cataloger.Api.Features.Books.Publishers.Update {
                 return;
             }
 
-            publisher.Name = model.Name.Trim();
+            PublisherMapper.UpdateEntity(publisher, model);
 
             await applicationDbContext.SaveChangesAsync(ct);
 

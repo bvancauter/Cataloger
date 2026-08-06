@@ -1,6 +1,6 @@
 ﻿using Cataloger.Api.Data;
-using Cataloger.Api.Entities.Books;
 using Cataloger.Api.Features.Books.Publishers.Models;
+using Cataloger.Api.Features.Books.Publishers.Utils;
 using Cataloger.Api.Routes;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
@@ -22,14 +22,9 @@ namespace Cataloger.Api.Features.Books.Publishers.Get {
 
             if (publisher is null) {
                 await Send.NotFoundAsync(ct);
-            } else {
-                await Send.OkAsync(ToResponse(publisher), ct);
+                return;
             }
+            await Send.OkAsync(PublisherMapper.ToFullModel(publisher), ct);
         }
-
-        private static PublisherFullModel ToResponse(PublisherEntity entity) => new() {
-            Id = entity.Id,
-            Name = entity.Name
-        };
     }
 }
