@@ -1,5 +1,5 @@
 ﻿namespace Cataloger.Api.Entities {
-    public class CollectionItemEntity {
+    public abstract class CollectionItemEntity {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public DateOnly? ReleaseDate { get; set; }
