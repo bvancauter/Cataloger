@@ -27,3 +27,11 @@ Migrations/*Snapshot.cs
 # OS
 .DS_Store
 Thumbs.db
+
+# Visual Paradigm 
+.vpprefdata/
+*.vpp.*
+*.vpp.working
+*.vpp.working-journal
+*.lock
+tmp/*
