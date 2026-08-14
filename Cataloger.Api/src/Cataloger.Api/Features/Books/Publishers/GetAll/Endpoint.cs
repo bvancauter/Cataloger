@@ -17,8 +17,11 @@ public class Endpoint(ApplicationDbContext applicationDbContext)
 
     public override async Task HandleAsync(PagedRequest request, CancellationToken ct) {
         var query = applicationDbContext.Publishers
-            .AsNoTracking()
-            .OrderBy(x => x.Name);
+            .AsNoTracking();
+
+        query = request.Descending
+            ? query.OrderByDescending(p => p.Name)
+            : query.OrderBy(p => p.Name);
 
         var totalItems = await query.CountAsync(ct);
 
