@@ -1,4 +1,5 @@
 using Cataloger.Api.Data;
+using Cataloger.Api.Middlewares;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,9 @@ builder.Services.AddFastEndpoints();
 builder.Services.SwaggerDocument();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 
 app.UseFastEndpoints();
 
