@@ -9,9 +9,10 @@
             } catch (Exception exception) {
                 logger.LogError(
                     exception,
-                    "An unhandled exception occurred while {Method} {Path}.",
+                    "An unhandled exception occurred while {Method} {Path}. TraceId: {TraceIdentifier}",
                     context.Request.Method,
-                    context.Request.Path
+                    context.Request.Path,
+                    context.TraceIdentifier
                 );
                 await HandleExceptionAsync(context);
             }
@@ -21,7 +22,8 @@
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = StatusCodes.Status500InternalServerError;
             var response = new {
-                message = "An unexpected error occurred. Please try again later."
+                message = "An unexpected error occurred. Please try again later.",
+                traceId = context.TraceIdentifier
             };
 
             await context.Response.WriteAsJsonAsync(response);
