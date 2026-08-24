@@ -24,6 +24,15 @@ namespace Cataloger.Api.Features.Books.Publishers.Update {
 
             PublisherMapper.UpdateEntity(publisher, model);
 
+            var exists = await applicationDbContext.Publishers
+                .AnyAsync(p => p.Name == publisher.Name, ct);
+
+            if (exists) {
+                AddError(r => r.Name, "Publisher already exists.");
+                await Send.ErrorsAsync(cancellation: ct);
+                return;
+            }
+
             await applicationDbContext.SaveChangesAsync(ct);
 
             await Send.NoContentAsync(ct);
