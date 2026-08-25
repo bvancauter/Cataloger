@@ -7,14 +7,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cataloger.Api.Features.Books.Publishers.Create {
     public class Endpoint(ApplicationDbContext applicationDbContext)
-        : Endpoint<PublisherSaveModel, PublisherFullModel> {
+        : Endpoint<PublisherCreateModel, PublisherFullModel> {
 
         public override void Configure() {
             Post(BookRoutes.Publishers);
             AllowAnonymous();
         }
 
-        public override async Task HandleAsync(PublisherSaveModel model, CancellationToken ct) {
+        public override async Task HandleAsync(PublisherCreateModel model, CancellationToken ct) {
             var exists = await applicationDbContext.Publishers
                 .AnyAsync(p => p.Name == model.Name, ct);
 

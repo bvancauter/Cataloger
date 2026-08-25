@@ -13,7 +13,7 @@ namespace Cataloger.Api.Features.Books.Publishers.Utils {
             Name = entity.Name
         };
 
-        public static PublisherEntity ToEntity(PublisherSaveModel model) => new() {
+        public static PublisherEntity ToEntity(PublisherCreateModel model) => new() {
             Name = model.Name.Trim()
         };
 
