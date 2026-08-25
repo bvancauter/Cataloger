@@ -1,4 +1,4 @@
-﻿using Cataloger.Api.Data;
+using Cataloger.Api.Data;
 using Cataloger.Api.Features.Books.Publishers.Models;
 using FastEndpoints;
 using FluentValidation;
@@ -13,8 +13,7 @@ namespace Cataloger.Api.Features.Books.Publishers.Utils.Validators {
             RuleFor(x => x.Name)
                 .NotNull()
                 .NotEmpty()
-                .MaximumLength(255)
-                .WithMessage("Publisher already exists.");
+                .MaximumLength(255);
         }
     }
 }
