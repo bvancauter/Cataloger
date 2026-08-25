@@ -1,8 +1,7 @@
-using Cataloger.Api.Features.Books.Publishers.Models;
 using FastEndpoints;
 using FluentValidation;
 
-namespace Cataloger.Api.Features.Books.Publishers.Utils.Validators {
+namespace Cataloger.Api.Features.Books.Publishers.Models.Validators {
     public class PublisherCreateValidator : Validator<PublisherCreateModel> {
         public PublisherCreateValidator() {
             RuleFor(x => x.Name)
