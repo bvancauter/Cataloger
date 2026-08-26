@@ -14,5 +14,10 @@ namespace Cataloger.Api.Features.Books.Authors.Utils {
             LastName = entity.LastName,
             FullName = entity.FullName
         };
+
+        public static PersonEntity ToEntity(AuthorCreateModel model) => new() {
+            FirstName = model.FirstName,
+            LastName = model.LastName
+        };
     }
 }

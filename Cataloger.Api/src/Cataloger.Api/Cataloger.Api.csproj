@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Books\Authors\Create\" />
     <Folder Include="Features\Books\Authors\Update\" />
   </ItemGroup>
 
