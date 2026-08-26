@@ -3,6 +3,7 @@ using Cataloger.Api.Middlewares;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.EntityFrameworkCore;
+using SwaggerHierarchySupport;
 
 DotNetEnv.Env.Load();
 
@@ -21,7 +22,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 
 builder.Services.AddFastEndpoints();
 
-builder.Services.SwaggerDocument();
+builder.Services.SwaggerDocument(o => o.AutoTagPathSegmentIndex = 0);
 
 var app = builder.Build();
 
@@ -29,6 +30,8 @@ app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 
 app.UseFastEndpoints();
+
+app.UseSwaggerUI(o => o.AddHierarchySupport());
 
 app.UseSwaggerGen();
 

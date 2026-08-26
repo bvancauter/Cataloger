@@ -11,6 +11,7 @@ namespace Cataloger.Api.Features.Books.Publishers.Create {
 
         public override void Configure() {
             Post(BookRoutes.Publishers);
+            Description(x => x.WithTags(BookRoutes.PublishersTag));
             AllowAnonymous();
         }
 

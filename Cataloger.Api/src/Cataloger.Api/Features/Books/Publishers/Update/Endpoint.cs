@@ -10,6 +10,7 @@ namespace Cataloger.Api.Features.Books.Publishers.Update {
         : Endpoint<PublisherUpdateModel> {
         public override void Configure() {
             Put(BookRoutes.Publishers + "/{id:guid}");
+            Description(x => x.WithTags(BookRoutes.PublishersTag));
             AllowAnonymous();
         }
 

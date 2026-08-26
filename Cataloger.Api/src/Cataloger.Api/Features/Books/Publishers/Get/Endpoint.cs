@@ -11,6 +11,7 @@ namespace Cataloger.Api.Features.Books.Publishers.Get {
 
         public override void Configure() {
             Get(BookRoutes.Publishers + "/{id:guid}");
+            Description(x => x.WithTags(BookRoutes.PublishersTag));
             AllowAnonymous();
         }
 

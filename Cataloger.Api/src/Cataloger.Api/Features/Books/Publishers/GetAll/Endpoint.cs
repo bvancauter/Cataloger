@@ -12,6 +12,7 @@ public class Endpoint(ApplicationDbContext applicationDbContext)
     : Endpoint<PagedRequest, PagedResponse<PublisherListModel>> {
     public override void Configure() {
         Get(BookRoutes.Publishers);
+        Description(x => x.WithTags(BookRoutes.PublishersTag));
         AllowAnonymous();
     }
 

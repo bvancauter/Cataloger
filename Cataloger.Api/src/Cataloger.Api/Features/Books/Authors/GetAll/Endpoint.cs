@@ -11,6 +11,7 @@ namespace Cataloger.Api.Features.Books.Authors.GetAll {
     : Endpoint<PagedRequest, PagedResponse<AuthorListModel>> {
         public override void Configure() {
             Get(BookRoutes.Authors);
+            Description(x => x.WithTags(BookRoutes.AuthorsTag));
             AllowAnonymous();
         }
 

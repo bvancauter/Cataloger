@@ -9,6 +9,7 @@ namespace Cataloger.Api.Features.Books.Publishers.Delete {
 
         public override void Configure() {
             Delete(BookRoutes.Publishers + "/{id:guid}");
+            Description(x => x.WithTags(BookRoutes.PublishersTag));
             AllowAnonymous();
         }
 
