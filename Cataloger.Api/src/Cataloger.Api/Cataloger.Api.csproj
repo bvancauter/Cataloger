@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Books\Authors\Create\" />
-    <Folder Include="Features\Books\Authors\Delete\" />
     <Folder Include="Features\Books\Authors\Update\" />
   </ItemGroup>
 
