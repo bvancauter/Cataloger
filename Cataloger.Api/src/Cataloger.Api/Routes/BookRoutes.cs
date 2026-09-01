@@ -8,5 +8,8 @@
 
         public const string Authors = Base + "/authors";
         public const string AuthorsTag = BaseTag + ":Authors";
+
+        public const string Series = Base + "/series";
+        public const string SeriesTag = BaseTag + ":Series";
     }
 }
