@@ -11,5 +11,10 @@ namespace Cataloger.Api.Features.Books.Series.Utils {
             Id = entity.Id,
             Name = entity.Name
         };
+
+        public static SeriesListModel ToListModel(SeriesEntity entity) => new() {
+            Id = entity.Id,
+            Name = entity.Name
+        };
     }
 }
