@@ -3,22 +3,21 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Cataloger.Api.Data.Configurations.Books {
-    public class BookContributorConfiguration : IEntityTypeConfiguration<BookContributorEntity> {
-        public void Configure(EntityTypeBuilder<BookContributorEntity> builder) {
-            builder.HasKey(x => new
-            {
-                x.BookId,
+    public class SeriesContributorConfiguration : IEntityTypeConfiguration<SeriesContributorEntity> {
+        public void Configure(EntityTypeBuilder<SeriesContributorEntity> builder) {
+            builder.HasKey(x => new {
+                x.SeriesId,
                 x.PersonId,
                 x.Role
             });
 
-            builder.HasOne(x => x.Book)
+            builder.HasOne(x => x.Series)
                 .WithMany(x => x.Contributors)
-                .HasForeignKey(x => x.BookId)
+                .HasForeignKey(x => x.SeriesId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(x => x.Person)
-                .WithMany(x => x.Books)
+                .WithMany(x => x.SeriesContributors)
                 .HasForeignKey(x => x.PersonId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

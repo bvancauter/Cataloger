@@ -11,7 +11,7 @@ namespace Cataloger.Api.Data {
         public DbSet<EditionEntity> Editions => Set<EditionEntity>();
         public DbSet<PublisherEntity> Publishers => Set<PublisherEntity>();
         public DbSet<PersonEntity> Persons => Set<PersonEntity>();
-        public DbSet<BookContributorEntity> BookContributors => Set<BookContributorEntity>();
+        public DbSet<SeriesContributorEntity> SeriesContributors => Set<SeriesContributorEntity>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);

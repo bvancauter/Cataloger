@@ -9,7 +9,6 @@
         public Guid EditionId { get; set; }
 
         public EditionEntity? Edition { get; set; }
-        public ICollection<BookContributorEntity>? Contributors { get; set; }
     }
 
     public enum BookType {

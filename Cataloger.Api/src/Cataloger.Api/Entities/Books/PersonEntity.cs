@@ -3,9 +3,9 @@
         public Guid Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        
+
         public string FullName => $"{FirstName} {LastName}";
 
-        public ICollection<BookContributorEntity>? Books { get; set; }
+        public ICollection<SeriesContributorEntity>? SeriesContributors { get; set; }
     }
 }
