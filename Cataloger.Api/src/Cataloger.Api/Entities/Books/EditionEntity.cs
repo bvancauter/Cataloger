@@ -8,6 +8,6 @@
 
         public SeriesEntity? Series { get; set; }
         public PublisherEntity? Publisher { get; set; }
-        public ICollection<BookEntity>? Books { get; set; }
+        public ICollection<BookEntity> Books { get; set; } = [];
     }
 }

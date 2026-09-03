@@ -3,7 +3,7 @@
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<EditionEntity>? Editions { get; set; }
-        public ICollection<SeriesContributorEntity>? Contributors { get; set; }
+        public ICollection<EditionEntity> Editions { get; set; } = [];
+        public ICollection<SeriesContributorEntity>? Contributors { get; set; } = [];
     }
 }

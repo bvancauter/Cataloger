@@ -6,6 +6,6 @@
 
         public string FullName => $"{FirstName} {LastName}";
 
-        public ICollection<SeriesContributorEntity>? SeriesContributors { get; set; }
+        public ICollection<SeriesContributorEntity> SeriesContributors { get; set; } = [];
     }
 }
