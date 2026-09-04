@@ -19,6 +19,8 @@ namespace Cataloger.Api.Features.Books.Authors.Get {
             Guid id = Route<Guid>("id");
             var author = await applicationDbContext.Persons
                 .AsNoTracking()
+                .Include(p => p.SeriesContributors)
+                .ThenInclude(sc => sc.Series)
                 .FirstOrDefaultAsync(p => p.Id == id, ct);
 
             if (author is null) {
